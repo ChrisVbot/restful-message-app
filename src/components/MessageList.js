@@ -62,6 +62,7 @@ class MessageList extends Component {
                                     this.handleDelete(message.id)}}>Delete</button>
                             </div>)
                     })}
+                    <Link to={`/messages/new`}>New message</Link>
                 </div>
             )
         }
