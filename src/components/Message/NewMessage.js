@@ -1,5 +1,5 @@
-
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 class NewMessage extends Component {
     constructor(props) {
@@ -30,9 +30,7 @@ class NewMessage extends Component {
             body: JSON.stringify({
                 text: message
             })
-        }).then(result => console.log(result));
-        
-
+        }).then(result => browserHistory.push('/'));
     }
 
     render() {

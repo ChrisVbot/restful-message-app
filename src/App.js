@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import MessageList from './components/MessageList';
-import logo from './logo.svg';
+import { Link } from 'react-router';
 import './App.css';
 
 class App extends Component {
@@ -8,6 +7,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
+          <ul>
+            <li><Link to={`/`}>Home</Link></li>
+            <li><Link to={`/messages/new`}>New Message</Link></li>
+          </ul>
         </div>
         <div className="content">
           {this.props.children}

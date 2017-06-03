@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
-import MessageList from './components/MessageList'
-import MessageDetail from './components/MessageDetail';
-import NewMessage from './components/NewMessage';
+import MessageList from './components/Message/MessageList'
+import MessageDetail from './components/Message/MessageDetail';
+import NewMessage from './components/Message/NewMessage';
 
 import App from './App';
 // import MessageDetail from './components/MessageDetail';
