@@ -5,7 +5,6 @@ import MessageDetail from './components/Message/MessageDetail';
 import NewMessage from './components/Message/NewMessage';
 
 import App from './App';
-// import MessageDetail from './components/MessageDetail';
 
 const Routes = (props) => (
     <Router {...props}>

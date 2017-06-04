@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class MessageDetail extends Component {
 
@@ -8,7 +9,7 @@ class MessageDetail extends Component {
             message: {}
         }
     }
-
+    
     componentDidMount() {
         const { id } = this.props.params;
         fetch(`https://chrisv-test.herokuapp.com/messages/${id}`)
@@ -31,12 +32,12 @@ class MessageDetail extends Component {
         }
         else {
             return(
-                <ul>
+                <ul className="message">
                     <li>Author: {author ? author : 'Unknown'}</li>
-                    <li>Created: {created_at}</li>
+                    <li>Created: {moment(created_at).format('MMMM Do YYYY, h:mm a')}</li>
                     <li>Message ID: {id}</li>
-                    <li>In reply to: {in_reply_to}</li>
-                    <li>Updated at: {updated_at}</li>
+                    <li>In reply to: {in_reply_to ? in_reply_to : 'N/A'}</li>
+                    <li>Updated at: {moment(updated_at).format('MMMM Do YYYY, h:mm a')}</li>
                     <li>UTC Offset: {utc_offset}</li>
                 </ul>
             )

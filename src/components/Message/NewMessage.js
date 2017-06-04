@@ -35,11 +35,13 @@ class NewMessage extends Component {
 
     render() {
         return(
-            <div>
+            <div className="message">
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Message: 
-                        <input type="text" value={this.state.message} onChange={this.handleChange} />
+                        Enter message: 
+                        <p>
+                            <textarea type="text" value={this.state.message} onChange={this.handleChange} />
+                        </p>
                     </label>
                     <input type="submit" value="Submit" />
                 </form>

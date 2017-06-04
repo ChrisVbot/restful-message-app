@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 
+import './message.css';
+
 class MessageList extends Component {
     constructor(props) {
         super(props);
@@ -12,6 +14,7 @@ class MessageList extends Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
     componentDidMount() {
+        //TODO: Implement way to manage pagination with results and error handling
         fetch('https://chrisv-test.herokuapp.com/messages/')
             .then(data => data.json())
             .then(messages => {
@@ -19,14 +22,10 @@ class MessageList extends Component {
                     messages,
                     results: messages.results
                 });
-            })
+            });
     }
 
-    renderMessages(messages) {
-       console.log(messages)
-    }
-
-
+    //TODO: Implement error handling
     handleDelete(messageID) {
         fetch(`https://chrisv-test.herokuapp.com/messages/${messageID}`, {
             method: 'DELETE',
@@ -50,19 +49,22 @@ class MessageList extends Component {
             )
         } else {
             return (
-                <div>
+                <div className="message-list">
                     {this.state.results.map((message) => {
                         return (
-                            <div key={message.id}>
-                                {formatDate(message.created_at)}: {message.text}
+                            <div className="message-item" key={message.id}>
+                                <p>{message.text}</p>
+                                Posted at:
+                                <p>
+                                    {formatDate(message.created_at)}
+                                </p>
                                 <p>
                                     <Link to={`/messages/${message.id}`}>Click for details</Link>
                                 </p>
-                                <button onClick={() => {
+                                <button className="delete-button" onClick={() => {
                                     this.handleDelete(message.id)}}>Delete</button>
                             </div>)
                     })}
-                    <Link to={`/messages/new`}>New message</Link>
                 </div>
             )
         }
